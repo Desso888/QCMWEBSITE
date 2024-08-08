@@ -21,6 +21,7 @@ exitBtn.onclick = () => {
 }
 
 continueBtn.onclick = () => {
+    shuffleQuestions(questions);
     quizSetion.classList.add('active');
     popupInfo.classList.remove('active');
     main.classList.remove('active');
@@ -32,6 +33,7 @@ continueBtn.onclick = () => {
 }
 
 tryAgainBtn.onclick = () => {
+    shuffleQuestions(questions);
     quizBox.classList.add('active');
     nextBtn.classList.remove('active');
     resultBox.classList.remove('active');
@@ -46,6 +48,7 @@ tryAgainBtn.onclick = () => {
 }
 
 goHomeBtn.onclick = () => {
+    shuffleQuestions(questions);
     quizSetion.classList.remove('active');
     nextBtn.classList.remove('active');
     resultBox.classList.remove('active');
@@ -83,12 +86,11 @@ const optionList = document.querySelector('.option-list');
 
 function showQuestions(index) {
     const questionText = document.querySelector('.question-text');
-    questionText.textContent = `${questions[index].numb}. ${questions[index].question}`;
+    questionText.textContent = `*/ ${questions[index].question}`;
 
-    let optionTag = `<div class="option"><span>${questions[index].options[0]}</span></div>
-        <div class="option"><span>${questions[index].options[1]}</span></div>
-        <div class="option"><span>${questions[index].options[2]}</span></div>
-        <div class="option"><span>${questions[index].options[3]}</span></div>`;
+    const shuffledOptions = shuffleOptions([...questions[index].options]);
+
+    let optionTag = shuffledOptions.map(option => `<div class="option"><span>${option}</span></div>`).join('');
 
     optionList.innerHTML = optionTag;
 
@@ -103,16 +105,17 @@ function optionSelected(answer) {
     let correctAnswer = questions[questionCount].answer;
     let allOptions = optionList.children.length;
 
+    const correctOption = questions[questionCount].options.find(option => option === correctAnswer);
+
     if (userAnswer === correctAnswer) {
         answer.classList.add('correct');
         userScore += 1;
         headerScore();
-    }
-    else {
+    } else {
         answer.classList.add('incorrect');
 
         for (let i = 0; i < allOptions; i++) {
-            if (optionList.children[i].textContent == correctAnswer) {
+            if (optionList.children[i].textContent === correctOption) {
                 optionList.children[i].setAttribute('class', 'option correct');
             }
         }
@@ -158,4 +161,19 @@ function showResultBox() {
             clearInterval(progress);
         }
     },speed);
+}
+
+function shuffleQuestions(questions) {
+    for (let i = questions.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [questions[i], questions[j]] = [questions[j], questions[i]];
+    }
+}
+
+function shuffleOptions(options) {
+    for (let i = options.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [options[i], options[j]] = [options[j], options[i]];
+    }
+    return options;
 }

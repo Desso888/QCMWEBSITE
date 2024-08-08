@@ -2,56 +2,56 @@ let questions =[
     {
         numb:1,
         question:"Who is the most powerful in One Punch Man?",
-        answer:"C/ Saitama",
+        answer:"Saitama",
         options:[
-            "A/ Genos",
-            "B/ Cosmic Garou",
-            "C/ Saitama",
-            "D/ Tatsumaki",
+            "Genos",
+            "Cosmic Garou",
+            "Saitama",
+            "Tatsumaki",
         ]
     },
     {
         numb:2,
         question:"Who is Akira Toriyama?",
-        answer:"A/ The father of DBZ",
+        answer:"The father of DBZ",
         options:[
-            "A/ The father of DBZ",
-            "B/ The father of Naruto",
-            "C/ A random person",
-            "D/ The father of JJK",
+            "The father of DBZ",
+            "The father of Naruto",
+            "A random person",
+            "The father of JJK",
         ]
     },
     {
         numb:3,
         question:"In which manga do we hear 'Bankai'?",
-        answer:"B/ Bleach",
+        answer:"Bleach",
         options:[
-            "A/ Naruto",
-            "B/ Bleach",
-            "C/ Dragon Ball Z",
-            "D/ Jujutsu Kaisen",
+            "Naruto",
+            "Bleach",
+            "Dragon Ball Z",
+            "Jujutsu Kaisen",
         ]
     },
     {
         numb:4,
         question:"Who is Natsu?",
-        answer:"D/ A wizard",
+        answer:"A wizard",
         options:[
-            "A/ A knight",
-            "B/ A clerk",
-            "C/ A kryptonian",
-            "D/ A wizard",
+            "A knight",
+            "A clerk",
+            "A kryptonian",
+            "A wizard",
         ]
     },
     {
         numb:5,
         question:"What is 'jiki jiki no mi'?",
-        answer:"A/ A devil fruit",
+        answer:"A devil fruit",
         options:[
-            "A/ A devil fruit",
-            "B/ A magic sword",
-            "C/ A shield",
-            "D/ A town",
+            "A devil fruit",
+            "A magic sword",
+            "A shield",
+            "A town",
         ]
     },
 ];
