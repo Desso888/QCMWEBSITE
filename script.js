@@ -86,11 +86,14 @@ const optionList = document.querySelector('.option-list');
 
 function showQuestions(index) {
     const questionText = document.querySelector('.question-text');
-    questionText.textContent = `*/ ${questions[index].question}`;
+    questionText.textContent = `Question ${index + 1} of ${questions.length}: ${questions[index].question}`;
 
     const shuffledOptions = shuffleOptions([...questions[index].options]);
 
-    let optionTag = shuffledOptions.map(option => `<div class="option"><span>${option}</span></div>`).join('');
+    let optionTag = shuffledOptions.map((option, i) => {
+        const letter = String.fromCharCode(65 + i);
+        return `<div class="option"><span>${option}</span></div>`;
+    }).join('');
 
     optionList.innerHTML = optionTag;
 
