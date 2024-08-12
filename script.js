@@ -92,7 +92,7 @@ function showQuestions(index) {
 
     let optionTag = shuffledOptions.map((option, i) => {
         const letter = String.fromCharCode(65 + i);
-        return `<div class="option"><span>${option}</span></div>`;
+        return `<div class="option"><span>${letter}. ${option}</span></div>`;
     }).join('');
 
     optionList.innerHTML = optionTag;
@@ -104,7 +104,7 @@ function showQuestions(index) {
 }
 
 function optionSelected(answer) {
-    let userAnswer = answer.textContent;
+    let userAnswer = answer.textContent.replace(/^[A-Z]\.\s*/, '');
     let correctAnswer = questions[questionCount].answer;
     let allOptions = optionList.children.length;
 
@@ -118,7 +118,7 @@ function optionSelected(answer) {
         answer.classList.add('incorrect');
 
         for (let i = 0; i < allOptions; i++) {
-            if (optionList.children[i].textContent === correctOption) {
+            if (optionList.children[i].textContent.replace(/^[A-Z]\.\s*/, '') === correctOption) {
                 optionList.children[i].setAttribute('class', 'option correct');
             }
         }
@@ -130,6 +130,7 @@ function optionSelected(answer) {
 
     nextBtn.classList.add('active');
 }
+
 
 function questionCounter(index) {
     const questionTotal = document.querySelector('.question-total');
