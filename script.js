@@ -8,6 +8,15 @@ const quizBox = document.querySelector('.quiz-box');
 const resultBox = document.querySelector('.result-box');
 const tryAgainBtn = document.querySelector('.tryAgain-btn');
 const goHomeBtn = document.querySelector('.goHome-btn');
+const aboutBtn = document.querySelector('.about-btn');
+const aboutModal = document.querySelector('.about-modal');
+const closeBtn = document.querySelector('.close-btn');
+const servicesBtn = document.querySelector('.services-btn');
+const servicesModal = document.querySelector('.services-modal');
+const closeServicesBtn = document.querySelector('.close-services-btn');
+const contactBtn = document.querySelector('.contact-btn');
+const contactModal = document.querySelector('.contact-modal');
+const closeContactBtn = document.querySelector('.close-contact-btn');
 
 
 startBtn.onclick = () => {
@@ -60,6 +69,48 @@ goHomeBtn.onclick = () => {
     showQuestions(questionCount);
     questionCounter(questionNumb);
     headerScore();
+}
+
+aboutBtn.onclick = () => {
+    aboutModal.style.display = 'block';
+}
+
+closeBtn.onclick = () => {
+    aboutModal.style.display = 'none';
+}
+
+window.onclick = (event) => {
+    if (event.target === aboutModal) {
+        aboutModal.style.display = 'none';
+    }
+}
+
+servicesBtn.onclick = () => {
+    servicesModal.style.display = 'block';
+}
+
+closeServicesBtn.onclick = () => {
+    servicesModal.style.display = 'none';
+}
+
+window.onclick = (event) => {
+    if (event.target === servicesModal) {
+        servicesModal.style.display = 'none';
+    }
+}
+
+contactBtn.onclick = () => {
+    contactModal.style.display = 'block';
+}
+
+closeContactBtn.onclick = () => {
+    contactModal.style.display = 'none';
+}
+
+window.onclick = (event) => {
+    if (event.target === contactModal) {
+        contactModal.style.display = 'none';
+    }
 }
 
 let questionCount = 0;
