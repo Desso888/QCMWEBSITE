@@ -20,6 +20,7 @@
                 <a href="#" class="about-btn">About</a>
                 <a href="#" class="services-btn">Services</a>
                 <a href="#" class="contact-btn">Contact</a>
+            </nav>
         </header>
 
         <div class="about-modal">
@@ -109,10 +110,16 @@
                 <div class="home-content">
                     <h1>Quiz</h1>
                     <p>Get ready for the Quiz</p>
+                    <label for="question-count">Select Number of Questions:</label>
+                    <select id="question-count">
+                        <option value="5">5 Questions</option>
+                        <option value="10">10 Questions</option>
+                        <option value="15">15 Questions</option>
+                    </select>
                     <button class="start-btn">Start Quiz</button>
                 </div>
             </section>
-    </div>
+        </div>
     </main>
 
     <div class="popup-info">
@@ -124,7 +131,6 @@
             <a href="#" class="info-btn continue-btn">Continue</a>
         </div>
     </div>
-
 
     <script src="questions.js"></script>
     <script src="script.js"></script>

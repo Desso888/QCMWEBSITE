@@ -548,3 +548,7 @@ body {
     cursor: pointer;
 }
 
+.question-total {
+    margin: 10px 0;
+}
+

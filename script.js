@@ -17,9 +17,15 @@ const closeServicesBtn = document.querySelector('.close-services-btn');
 const contactBtn = document.querySelector('.contact-btn');
 const contactModal = document.querySelector('.contact-modal');
 const closeContactBtn = document.querySelector('.close-contact-btn');
+const questionCountSelect = document.getElementById('question-count');
 
+/*startBtn.onclick = () => {
+    popupInfo.classList.add('active');
+    main.classList.add('active');
+}*/
 
 startBtn.onclick = () => {
+    totalQuestions = parseInt(questionCountSelect.value); // Get selected number of questions
     popupInfo.classList.add('active');
     main.classList.add('active');
 }
@@ -116,11 +122,26 @@ window.onclick = (event) => {
 let questionCount = 0;
 let questionNumb = 1;
 let userScore = 0;
+let totalQuestions = 5;
 
 const nextBtn = document.querySelector('.next-btn');
 
-nextBtn.onclick = () => {
+/*nextBtn.onclick = () => {
     if (questionCount < questions.length - 1) {
+        questionCount++;
+        showQuestions(questionCount);
+
+        questionNumb++;
+        questionCounter(questionNumb);
+
+        nextBtn.classList.remove('active');
+    } else {
+        showResultBox();
+    }
+}*/
+
+nextBtn.onclick = () => {
+    if (questionCount < totalQuestions - 1) { // Use totalQuestions instead of questions.length
         questionCount++;
         showQuestions(questionCount);
 
@@ -135,9 +156,28 @@ nextBtn.onclick = () => {
 
 const optionList = document.querySelector('.option-list');
 
-function showQuestions(index) {
+/*function showQuestions(index) {
     const questionText = document.querySelector('.question-text');
     questionText.textContent = `Question ${index + 1} of ${questions.length}: ${questions[index].question}`;
+
+    const shuffledOptions = shuffleOptions([...questions[index].options]);
+
+    let optionTag = shuffledOptions.map((option, i) => {
+        const letter = String.fromCharCode(65 + i);
+        return `<div class="option"><span>${letter}. ${option}</span></div>`;
+    }).join('');
+
+    optionList.innerHTML = optionTag;
+
+    const option = document.querySelectorAll('.option');
+    for (let i = 0; i < option.length; i++) {
+        option[i].setAttribute('onclick', 'optionSelected(this)');
+    }
+}*/
+
+function showQuestions(index) {
+    const questionText = document.querySelector('.question-text');
+    questionText.textContent = `Question ${index + 1} of ${totalQuestions}: ${questions[index].question}`;
 
     const shuffledOptions = shuffleOptions([...questions[index].options]);
 
@@ -185,12 +225,12 @@ function optionSelected(answer) {
 
 function questionCounter(index) {
     const questionTotal = document.querySelector('.question-total');
-    questionTotal.textContent = `${index} of ${questions.length} Questions`;
+    questionTotal.textContent = `${index} of ${totalQuestions} Questions`;
 }
 
 function headerScore() {
     const headerScoreText = document.querySelector('.header-score');
-    headerScoreText.textContent = `Score: ${userScore} / ${questions.length}`;
+    headerScoreText.textContent = `Score: ${userScore} / ${totalQuestions}`;
 }
 
 function showResultBox() {
@@ -198,13 +238,13 @@ function showResultBox() {
     resultBox.classList.add('active');
 
     const scoreText = document.querySelector('.score-text');
-    scoreText.textContent = `Your score ${userScore} out of ${ questions.length}`;
+    scoreText.textContent = `Your score ${userScore} out of ${totalQuestions}`;
 
     const circularProgress = document.querySelector('.circular-progress');
     const progressValue = document.querySelector('.progress-value');
     let progressStartValue = -1;
-    let progressEndValue = (userScore / questions.length) * 100;
-    let speed = 100 / questions.length;
+    let progressEndValue = (userScore / totalQuestions) * 100;
+    let speed = 100 / totalQuestions;
 
     let progress = setInterval(() => {
         progressStartValue++;
