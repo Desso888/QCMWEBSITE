@@ -100,11 +100,11 @@ closeBtn.onclick = () => {
     homeBtn.classList.add('active');
 }
 
-window.onclick = (event) => {
+/*window.onclick = (event) => {
     if (event.target === aboutModal) {
         aboutModal.style.display = 'none';
     }
-}
+}*/
 
 servicesBtn.onclick = () => {
     homeBtn.classList.remove('active');
@@ -122,11 +122,11 @@ closeServicesBtn.onclick = () => {
     homeBtn.classList.add('active');
 }
 
-window.onclick = (event) => {
+/*window.onclick = (event) => {
     if (event.target === servicesModal) {
         servicesModal.style.display = 'none';
     }
-}
+}*/
 
 contactBtn.onclick = () => {
     homeBtn.classList.remove('active');
@@ -144,11 +144,11 @@ closeContactBtn.onclick = () => {
     homeBtn.classList.add('active');
 }
 
-window.onclick = (event) => {
+/*window.onclick = (event) => {
     if (event.target === contactModal) {
         contactModal.style.display = 'none';
     }
-}
+}*/
 
 let questionCount = 0;
 let questionNumb = 1;
