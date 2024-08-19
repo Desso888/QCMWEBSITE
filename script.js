@@ -1,3 +1,4 @@
+const homeBtn = document.querySelector('.navbar a.active');
 const startBtn = document.querySelector('.start-btn');
 const popupInfo = document.querySelector('.popup-info');
 const exitBtn = document.querySelector('.exit-btn');
@@ -19,13 +20,9 @@ const contactModal = document.querySelector('.contact-modal');
 const closeContactBtn = document.querySelector('.close-contact-btn');
 const questionCountSelect = document.getElementById('question-count');
 
-/*startBtn.onclick = () => {
-    popupInfo.classList.add('active');
-    main.classList.add('active');
-}*/
+let totalQuestions = 10;
 
 startBtn.onclick = () => {
-    totalQuestions = parseInt(questionCountSelect.value); // Get selected number of questions
     popupInfo.classList.add('active');
     main.classList.add('active');
 }
@@ -77,12 +74,30 @@ goHomeBtn.onclick = () => {
     headerScore();
 }
 
+homeBtn.onclick = () => {
+    aboutBtn.classList.remove('active');
+    servicesBtn.classList.remove('active');
+    contactBtn.classList.remove('active');
+    homeBtn.classList.add('active');
+    aboutModal.style.display = 'none';
+    servicesModal.style.display = 'none';
+    contactModal.style.display = 'none';
+};
+
 aboutBtn.onclick = () => {
+    homeBtn.classList.remove('active');
+    servicesBtn.classList.remove('active');
+    contactBtn.classList.remove('active');
+    aboutBtn.classList.add('active');
     aboutModal.style.display = 'block';
+    servicesModal.style.display = 'none';
+    contactModal.style.display = 'none';
 }
 
 closeBtn.onclick = () => {
     aboutModal.style.display = 'none';
+    aboutBtn.classList.remove('active');
+    homeBtn.classList.add('active');
 }
 
 window.onclick = (event) => {
@@ -92,11 +107,19 @@ window.onclick = (event) => {
 }
 
 servicesBtn.onclick = () => {
+    homeBtn.classList.remove('active');
+    aboutBtn.classList.remove('active');
+    contactBtn.classList.remove('active');
+    servicesBtn.classList.add('active');
     servicesModal.style.display = 'block';
-}
+    aboutModal.style.display = 'none';
+    contactModal.style.display = 'none';
+};
 
 closeServicesBtn.onclick = () => {
+    servicesBtn.classList.remove('active');
     servicesModal.style.display = 'none';
+    homeBtn.classList.add('active');
 }
 
 window.onclick = (event) => {
@@ -106,11 +129,19 @@ window.onclick = (event) => {
 }
 
 contactBtn.onclick = () => {
+    homeBtn.classList.remove('active');
+    aboutBtn.classList.remove('active');
+    servicesBtn.classList.remove('active');
+    contactBtn.classList.add('active');
     contactModal.style.display = 'block';
-}
+    aboutModal.style.display = 'none';
+    servicesModal.style.display = 'none';
+};
 
 closeContactBtn.onclick = () => {
+    contactBtn.classList.remove('active');
     contactModal.style.display = 'none';
+    homeBtn.classList.add('active');
 }
 
 window.onclick = (event) => {
@@ -122,26 +153,11 @@ window.onclick = (event) => {
 let questionCount = 0;
 let questionNumb = 1;
 let userScore = 0;
-let totalQuestions = 5;
 
 const nextBtn = document.querySelector('.next-btn');
 
-/*nextBtn.onclick = () => {
-    if (questionCount < questions.length - 1) {
-        questionCount++;
-        showQuestions(questionCount);
-
-        questionNumb++;
-        questionCounter(questionNumb);
-
-        nextBtn.classList.remove('active');
-    } else {
-        showResultBox();
-    }
-}*/
-
 nextBtn.onclick = () => {
-    if (questionCount < totalQuestions - 1) { // Use totalQuestions instead of questions.length
+    if (questionCount < totalQuestions - 1) {
         questionCount++;
         showQuestions(questionCount);
 
@@ -155,25 +171,6 @@ nextBtn.onclick = () => {
 }
 
 const optionList = document.querySelector('.option-list');
-
-/*function showQuestions(index) {
-    const questionText = document.querySelector('.question-text');
-    questionText.textContent = `Question ${index + 1} of ${questions.length}: ${questions[index].question}`;
-
-    const shuffledOptions = shuffleOptions([...questions[index].options]);
-
-    let optionTag = shuffledOptions.map((option, i) => {
-        const letter = String.fromCharCode(65 + i);
-        return `<div class="option"><span>${letter}. ${option}</span></div>`;
-    }).join('');
-
-    optionList.innerHTML = optionTag;
-
-    const option = document.querySelectorAll('.option');
-    for (let i = 0; i < option.length; i++) {
-        option[i].setAttribute('onclick', 'optionSelected(this)');
-    }
-}*/
 
 function showQuestions(index) {
     const questionText = document.querySelector('.question-text');
