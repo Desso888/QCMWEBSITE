@@ -578,3 +578,14 @@ ul {
     color: #ffffff;
     font-weight: bold;
 }
+
+.contact-modal a {
+    color: #e900ca;
+    text-decoration: none;
+  }
+  
+  .contact-modal a:hover {
+    color: #e900ca;
+    text-decoration: underline;
+  }
+  
