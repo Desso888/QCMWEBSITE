@@ -142,9 +142,6 @@ closeContactBtn.onclick = () => {
 }
 
 prevBtn.onclick = () => {
-    /*if (userScore > 0) {
-        userScore--;
-    }*/
     if (questionCount > 0) {
         questionCount--;
         showQuestions(questionCount);
@@ -152,7 +149,7 @@ prevBtn.onclick = () => {
         questionCounter(questionNumb);
         nextBtn.classList.add('active');
     }
-};
+}
 
 let questionCount = 0;
 let questionNumb = 1;
