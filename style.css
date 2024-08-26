@@ -309,12 +309,21 @@ body {
     margin-top: 25px;
 }
 
+.quiz-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 2px solid #c40094;
+    padding-top: 20px;
+    margin-top: 25px;
+}
+
 .quiz-footer .question-total {
     font-size: 16px;
     font-weight: 600;
 }
 
-.quiz-footer .next-btn {
+/*.quiz-footer .next-btn {
     width: 100px;
     height: 45px;
     background: rgba(225, 225, 225, .1);
@@ -327,8 +336,35 @@ body {
     cursor: pointer;
     pointer-events: none;
     transition:.5s;
+}*/
+
+.quiz-footer .prev-btn,
+.quiz-footer .next-btn {
+    width: 100px;
+    height: 45px;
+    background: rgba(225, 225, 225, 0.1);
+    border: 2px solid rgba(225, 225, 225, 0.1);
+    outline: none;
+    border-radius: 6px;
+    font-size: 16px;
+    color: rgba(225, 225, 225, 0.3);
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.5s;
 }
 
+.quiz-footer .prev-btn {
+    margin-right: 10px;
+}
+
+/*.quiz-footer .next-btn.active {
+    pointer-events: auto;
+    background: #c40094;
+    border-color: #c40094;
+    color: #fff;
+}*/
+
+.quiz-footer .prev-btn.active,
 .quiz-footer .next-btn.active {
     pointer-events: auto;
     background: #c40094;
@@ -336,6 +372,12 @@ body {
     color: #fff;
 }
 
+/*.quiz-footer .next-btn.active:hover {
+    background: #950170;
+    border-color: #950170;
+}*/
+
+.quiz-footer .prev-btn.active:hover,
 .quiz-footer .next-btn.active:hover {
     background: #950170;
     border-color: #950170;

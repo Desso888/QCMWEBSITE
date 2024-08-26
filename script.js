@@ -19,6 +19,7 @@ const contactBtn = document.querySelector('.contact-btn');
 const contactModal = document.querySelector('.contact-modal');
 const closeContactBtn = document.querySelector('.close-contact-btn');
 const questionCountSelect = document.getElementById('question-count');
+const prevBtn = document.querySelector('.prev-btn');
 
 let totalQuestions = 10;
 
@@ -150,6 +151,17 @@ closeContactBtn.onclick = () => {
     }
 }*/
 
+prevBtn.onclick = () => {
+    userScore--;
+    if (questionCount > 0) {
+        questionCount--;
+        showQuestions(questionCount);
+        questionNumb--;
+        questionCounter(questionNumb);
+        nextBtn.classList.add('active');
+    }
+};
+
 let questionCount = 0;
 let questionNumb = 1;
 let userScore = 0;
@@ -188,6 +200,12 @@ function showQuestions(index) {
     const option = document.querySelectorAll('.option');
     for (let i = 0; i < option.length; i++) {
         option[i].setAttribute('onclick', 'optionSelected(this)');
+    }
+
+    if (index === 0) {
+        prevBtn.classList.remove('active'); // Hide on the first question
+    } else {
+        prevBtn.classList.add('active'); // Show on subsequent questions
     }
 }
 
