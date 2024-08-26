@@ -323,21 +323,6 @@ body {
     font-weight: 600;
 }
 
-/*.quiz-footer .next-btn {
-    width: 100px;
-    height: 45px;
-    background: rgba(225, 225, 225, .1);
-    border: 2px solid rgba(225, 225, 225, .1);
-    outline: none;
-    border-radius: 6px;
-    font-size: 16px;
-    color: rgba(225, 225, 225, .3);
-    font-weight: 600;
-    cursor: pointer;
-    pointer-events: none;
-    transition:.5s;
-}*/
-
 .quiz-footer .prev-btn,
 .quiz-footer .next-btn {
     width: 100px;
@@ -357,13 +342,6 @@ body {
     margin-right: 10px;
 }
 
-/*.quiz-footer .next-btn.active {
-    pointer-events: auto;
-    background: #c40094;
-    border-color: #c40094;
-    color: #fff;
-}*/
-
 .quiz-footer .prev-btn.active,
 .quiz-footer .next-btn.active {
     pointer-events: auto;
@@ -371,11 +349,6 @@ body {
     border-color: #c40094;
     color: #fff;
 }
-
-/*.quiz-footer .next-btn.active:hover {
-    background: #950170;
-    border-color: #950170;
-}*/
 
 .quiz-footer .prev-btn.active:hover,
 .quiz-footer .next-btn.active:hover {
@@ -498,14 +471,6 @@ body {
     background-color: rgba(0,0,0,0.4);
 }
 
-/*.modal-content {
-    background-color: #0f0f0f;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-}*/
-
 .modal-content {
     background-color: #0f0f0f;
     margin: 15% auto;
@@ -624,10 +589,18 @@ ul {
 .contact-modal a {
     color: #e900ca;
     text-decoration: none;
-  }
+}
   
-  .contact-modal a:hover {
+.contact-modal a:hover {
     color: #e900ca;
     text-decoration: underline;
-  }
+}
+
+.timer {
+    font-size: 20px;
+    font-weight: 600;
+    color: #c40094;
+    margin-bottom: 20px;
+    text-align: center;
+}
   

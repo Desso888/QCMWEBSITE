@@ -22,6 +22,8 @@ const questionCountSelect = document.getElementById('question-count');
 const prevBtn = document.querySelector('.prev-btn');
 
 let totalQuestions = 10;
+let timer;
+let timeLeft = 120;
 
 startBtn.onclick = () => {
     popupInfo.classList.add('active');
@@ -43,9 +45,13 @@ continueBtn.onclick = () => {
     showQuestions(0);
     questionCounter(1);
     headerScore();
+    startTimer();
 }
 
 tryAgainBtn.onclick = () => {
+    resetTimer();
+    startTimer();
+
     shuffleQuestions(questions);
     quizBox.classList.add('active');
     nextBtn.classList.remove('active');
@@ -61,6 +67,8 @@ tryAgainBtn.onclick = () => {
 }
 
 goHomeBtn.onclick = () => {
+    resetTimer();
+
     shuffleQuestions(questions);
     quizSetion.classList.remove('active');
     nextBtn.classList.remove('active');
@@ -101,12 +109,6 @@ closeBtn.onclick = () => {
     homeBtn.classList.add('active');
 }
 
-/*window.onclick = (event) => {
-    if (event.target === aboutModal) {
-        aboutModal.style.display = 'none';
-    }
-}*/
-
 servicesBtn.onclick = () => {
     homeBtn.classList.remove('active');
     aboutBtn.classList.remove('active');
@@ -122,12 +124,6 @@ closeServicesBtn.onclick = () => {
     servicesModal.style.display = 'none';
     homeBtn.classList.add('active');
 }
-
-/*window.onclick = (event) => {
-    if (event.target === servicesModal) {
-        servicesModal.style.display = 'none';
-    }
-}*/
 
 contactBtn.onclick = () => {
     homeBtn.classList.remove('active');
@@ -145,14 +141,10 @@ closeContactBtn.onclick = () => {
     homeBtn.classList.add('active');
 }
 
-/*window.onclick = (event) => {
-    if (event.target === contactModal) {
-        contactModal.style.display = 'none';
-    }
-}*/
-
 prevBtn.onclick = () => {
-    userScore--;
+    /*if (userScore > 0) {
+        userScore--;
+    }*/
     if (questionCount > 0) {
         questionCount--;
         showQuestions(questionCount);
@@ -178,6 +170,7 @@ nextBtn.onclick = () => {
 
         nextBtn.classList.remove('active');
     } else {
+        clearInterval(timer);
         showResultBox();
     }
 }
@@ -203,9 +196,9 @@ function showQuestions(index) {
     }
 
     if (index === 0) {
-        prevBtn.classList.remove('active'); // Hide on the first question
+        prevBtn.classList.remove('active');
     } else {
-        prevBtn.classList.add('active'); // Show on subsequent questions
+        prevBtn.classList.add('active');
     }
 }
 
@@ -286,4 +279,22 @@ function shuffleOptions(options) {
         [options[i], options[j]] = [options[j], options[i]];
     }
     return options;
+}
+
+function startTimer() {
+    timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById('time-left').textContent = timeLeft;
+
+        if (timeLeft <= 0) {
+            clearInterval(timer);
+            showResultBox();
+        }
+    }, 1000);
+}
+
+function resetTimer() {
+    clearInterval(timer);
+    timeLeft = 60;
+    document.getElementById('time-left').textContent = timeLeft;
 }
