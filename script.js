@@ -23,7 +23,7 @@ const prevBtn = document.querySelector('.prev-btn');
 
 let totalQuestions = 10;
 let timer;
-let timeLeft = 120;
+let timeLeft = 5;
 
 startBtn.onclick = () => {
     popupInfo.classList.add('active');
@@ -142,6 +142,8 @@ closeContactBtn.onclick = () => {
 }
 
 prevBtn.onclick = () => {
+    clearInterval(timer);
+    resetTimer();
     if (questionCount > 0) {
         questionCount--;
         showQuestions(questionCount);
@@ -149,6 +151,7 @@ prevBtn.onclick = () => {
         questionCounter(questionNumb);
         nextBtn.classList.add('active');
     }
+    startTimer();
 }
 
 let questionCount = 0;
@@ -158,17 +161,17 @@ let userScore = 0;
 const nextBtn = document.querySelector('.next-btn');
 
 nextBtn.onclick = () => {
+    clearInterval(timer);
+    resetTimer();
     if (questionCount < totalQuestions - 1) {
-        questionCount++;
-        showQuestions(questionCount);
-
-        questionNumb++;
-        questionCounter(questionNumb);
-
-        nextBtn.classList.remove('active');
+      questionCount++;
+      showQuestions(questionCount);
+      questionNumb++;
+      questionCounter(questionNumb);
+      nextBtn.classList.remove('active');
+      startTimer();
     } else {
-        clearInterval(timer);
-        showResultBox();
+      showResultBox();
     }
 }
 
@@ -280,18 +283,20 @@ function shuffleOptions(options) {
 
 function startTimer() {
     timer = setInterval(() => {
-        timeLeft--;
-        document.getElementById('time-left').textContent = timeLeft;
-
-        if (timeLeft <= 0) {
-            clearInterval(timer);
-            showResultBox();
+      timeLeft--;
+      document.getElementById('time-left').textContent = timeLeft;
+      if (timeLeft === 0) {
+        clearInterval(timer);
+        if (questionCount < totalQuestions - 1) {
+          nextBtn.click();
+        } else {
+          showResultBox();
         }
+      }
     }, 1000);
 }
 
 function resetTimer() {
-    clearInterval(timer);
-    timeLeft = 60;
+    timeLeft = 5;
     document.getElementById('time-left').textContent = timeLeft;
 }
