@@ -21,7 +21,7 @@ const closeContactBtn = document.querySelector('.close-contact-btn');
 const questionCountSelect = document.getElementById('question-count');
 const prevBtn = document.querySelector('.prev-btn');
 
-let totalQuestions = 10;
+let totalQuestions = 20;
 let timer;
 let timeLeft = 20;
 
@@ -297,6 +297,6 @@ function startTimer() {
 }
 
 function resetTimer() {
-    //timeLeft = 5;
+    timeLeft = 20;
     document.getElementById('time-left').textContent = timeLeft;
 }
