@@ -23,7 +23,7 @@ const prevBtn = document.querySelector('.prev-btn');
 
 let totalQuestions = 10;
 let timer;
-let timeLeft = 5;
+let timeLeft = 20;
 
 startBtn.onclick = () => {
     popupInfo.classList.add('active');
