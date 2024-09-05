@@ -297,6 +297,6 @@ function startTimer() {
 }
 
 function resetTimer() {
-    timeLeft = 5;
+    //timeLeft = 5;
     document.getElementById('time-left').textContent = timeLeft;
 }
