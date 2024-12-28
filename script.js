@@ -177,7 +177,7 @@ nextBtn.onclick = () => {
 
 const optionList = document.querySelector('.option-list');
 
-function showQuestions(index) {
+/*function showQuestions(index) {
     const questionText = document.querySelector('.question-text');
     questionText.textContent = `Question ${index + 1} of ${totalQuestions}: ${questions[index].question}`;
 
@@ -200,6 +200,31 @@ function showQuestions(index) {
     } else {
         prevBtn.classList.add('active');
     }
+}*/
+
+function showQuestions(index) {
+    const questionText = document.querySelector('.question-text');
+    questionText.textContent = `Question ${index + 1} of ${questions.length}: ${questions[index].question}`;
+    
+    const optionList = document.querySelector('.option-list');
+    optionList.innerHTML = ''; // Vider la liste d'options avant d'ajouter de nouvelles options
+    
+    const options = [
+        questions[index].option_a,
+        questions[index].option_b,
+        questions[index].option_c,
+        questions[index].option_d
+    ];
+    
+    options.forEach((option, i) => {
+        const optionElement = document.createElement('div');
+        optionElement.classList.add('option');
+        optionElement.innerHTML = `<span>${String.fromCharCode(65 + i)}/ ${option}</span>`;
+        optionList.appendChild(optionElement);
+        
+        // Ajouter un événement clic pour chaque option
+        optionElement.onclick = () => selectOption(option);
+    });
 }
 
 function optionSelected(answer) {
@@ -300,3 +325,23 @@ function resetTimer() {
     timeLeft = 20;
     document.getElementById('time-left').textContent = timeLeft;
 }
+
+let questions = [];
+
+// Fonction pour récupérer les questions depuis le serveur
+async function fetchQuestions() {
+    const response = await fetch('http://localhost:3000/questions');
+    questions = await response.json();
+}
+
+// Appeler la fonction lors du chargement de la page
+window.onload = () => {
+    fetchQuestions().then(() => {
+        shuffleQuestions(questions);
+        quizSetion.classList.add('active');
+        showQuestions(0);
+        questionCounter(1);
+        headerScore();
+        startTimer();
+    });
+};

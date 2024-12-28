@@ -1,4 +1,4 @@
-let questions = [
+/*let questions = [
     {
         numb: 1,
         question: "Who is the most powerful in One Punch Man?",
@@ -274,9 +274,9 @@ let questions = [
             "Mystery",
         ]
     }
-];
+];*/
 
-/*let questions = [
+let questions = [
     {
         numb: 1,
         question: "What does HTML stand for?",
@@ -607,4 +607,4 @@ let questions = [
             "To create a loop",
         ]
     }
-];*/
+];
